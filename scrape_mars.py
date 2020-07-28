@@ -1,6 +1,7 @@
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 from splinter import Browser
+import time
 
 def init_browser():
     # Define executable path and browser for splinter
@@ -53,16 +54,20 @@ def scrape():
     # Assign the splinter handle to an 'html' object and parse it with BeautifulSoup
     html_twitter = browser.html
     twitter_soup = bs(html_twitter,'lxml')
+    time.sleep(2) # this refreshes the browser and get the correct soup format the second time
+
+    html_twitter = browser.html
+    twitter_soup = bs(html_twitter,'lxml')
 
     # Retrieve the text from the most recent twit
     spans = twitter_soup.find_all('span')
 
-    mw_twits = []
+    mw_tweets = []
     for span in spans:
         if (span.text and span.text.startswith('InSight')):
-            mw_twits.append(span.text)
+            mw_tweets.append(span.text)
             
-    mars_weather = mw_twits[0]
+    mars_weather = mw_tweets[0]
 
     # URL of page to be scraped
     mars_facts = 'https://space-facts.com/mars/'
