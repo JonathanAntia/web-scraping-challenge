@@ -41,10 +41,9 @@ def scrape():
 
     # Retrieve the URL for the featured image
     featured_image_url =image_soup.find('footer').find('a', class_='button')['data-fancybox-href']
-    featured_image_url = featured_image_url.strip('/')
-    featured_image_url = f'https://www.{featured_image_url}'
+    featured_image_url = f'https://www.jpl.nasa.gov{featured_image_url}'
 
-    # URL of page to be scraped
+    # # URL of page to be scraped
     mars_twitter = 'https://twitter.com/marswxreport?lang=en'
 
     # Get a handle on the URL with splinter using a wait_time to allow for all results to come through
