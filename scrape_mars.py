@@ -1,7 +1,6 @@
 import pandas as pd
 from bs4 import BeautifulSoup as bs
 from splinter import Browser
-import pymongo
 
 def init_browser():
     # Define executable path and browser for splinter
@@ -114,18 +113,5 @@ def scrape():
                     'mars_weather': mars_weather,
                     'html_table_string': html_table_string,
                     'hemisphere_image_urls':hemisphere_image_urls}
-    
-    # Set up connection to mongodb
-    conn = "mongodb://localhost:27107"
-    client = pymongo.MongoClient(conn)
-
-    # Select database and collection to use
-    db = client.mission_to_mars_db
-
-    # Drop the collection if available to remove duplicates
-    db.mars_data.drop()
-
-    # Create the collection in the database and inserts the scraped data
-    db.mars_data.insert_many(scraped_data)
 
     return scraped_data
