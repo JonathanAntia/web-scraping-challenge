@@ -13,9 +13,9 @@ def scrape():
     url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
 
     # Get a handle on the URL with splinter using a wait_time to allow for all results to come through
-    browser.is_element_present_by_css("ul.item_list li.slide", wait_time=1)
     browser.visit(url)
-
+    browser.is_element_present_by_css("ul.item_list li.slide", wait_time=1)
+    
     # Assign the splinter handle to an 'html' object and parse it with BeautifulSoup
     html = browser.html
     soup = bs(html,'lxml')
@@ -31,9 +31,9 @@ def scrape():
     url_image = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
 
     # Get a handle on the URL with splinter using a wait_time to allow for all results to come through
-    browser.is_element_present_by_css("section.primary_media_feature", wait_time=0.5)
     browser.visit(url_image)
-
+    browser.is_element_present_by_css("section.primary_media_feature", wait_time=1)
+    
     # Assign the splinter handle to an 'html' object and parse it with BeautifulSoup
     html_image = browser.html
     image_soup = bs(html_image,'lxml')
@@ -47,9 +47,9 @@ def scrape():
     mars_twitter = 'https://twitter.com/marswxreport?lang=en'
 
     # Get a handle on the URL with splinter using a wait_time to allow for all results to come through
-    browser.is_element_present_by_tag("article", wait_time=1)
     browser.visit(mars_twitter)
-
+    browser.is_element_present_by_tag("article", wait_time=1)
+    
     # Assign the splinter handle to an 'html' object and parse it with BeautifulSoup
     html_twitter = browser.html
     twitter_soup = bs(html_twitter,'lxml')
@@ -87,9 +87,9 @@ def scrape():
 
     for hem in hem_urls:
         # Get a handle on the URL with splinter using a wait_time to allow for all results to come through
-        browser.is_element_present_by_css("dl dd", wait_time=0.5)
         browser.visit(hem)
-        
+        browser.is_element_present_by_css("dl dd", wait_time=0.5)
+                
         # Assign the splinter handle to an 'html' object and parse it with BeautifulSoup
         hem_html = browser.html
         hem_soup = bs(hem_html,'lxml')
