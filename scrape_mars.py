@@ -72,6 +72,7 @@ def scrape():
 
     # Retrieve the first table of those scraped from the URL
     table = scraped_tables[0]
+    table = table.rename(columns={0:"",1:'Value'})
 
     # Convert the data into a HTML string
     html_table_string = table.to_html(header=False, index=False)
