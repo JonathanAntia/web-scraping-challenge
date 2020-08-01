@@ -100,7 +100,8 @@ def scrape():
         hem_soup = bs(hem_html,'lxml')
         
         # Retrieve the image URL and hemisphere title
-        img_url = hem_soup.find('div', class_='content').a['href']
+        img = hem_soup.find('img', class_='wide-image')['src']
+        img_url = f'https://astrogeology.usgs.gov{img}'
         title = hem_soup.find('h2', class_='title').text
         
         # Modify the title to how only the name of the Hemisphere
