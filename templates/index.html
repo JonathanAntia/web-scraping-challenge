@@ -11,51 +11,63 @@
       <title>Mission to Mars</title>
   </head>
   <body>
-    <div class='container bg-light'>
-      <div class='jumbotron text-center'>
-        <h1>Mission to Mars</h1>
-        <a class="btn btn-primary" href="/scrape" role="button">Scrape New Data</a>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <div class='jumbotron text-center'>
+            <h1>Mission to Mars</h1>
+            <a class="btn btn-primary" href="/scrape" role="button">Scrape New Data</a>
+          </div>
+        </div>
       </div>
     </div>
     <main class='container'>
       <div class='row'>
-        <h3>Latest Mars News</h3>
-        <h4>{{mars_data.news_title}}</h4>
-        <p class='text-justify'>{{mars_data.news_p}}</p>            
+        <div class='col-md-12'>
+          <h3>Latest Mars News</h3> 
+        </div>        
       </div>
       <div class='row'>
-        <div class='col-lg-8'>
-          <a href="{{mars_data.featured_image_url}}"><img src="{{mars_data.featured_image_url}}" alt="JPL Mars Space Images - Featured Image"></a>
+        <div class='col-md-12'>
+          <h5>{{mars_data.news_title}}</h5>
+          <p class='text-justify' style="font-size: small;">{{mars_data.news_p}}</p> 
         </div>
-        <div class='col-lg-4'>
+      </div>  
+      <div class='row'>
+        <div class='col-md-8'>
+          <h3>Featured Image</h3>
+          <a href="{{mars_data.featured_image_url}}"><img src="{{mars_data.featured_image_url}}" class='img-responsive' width="100%" height="auto" alt="JPL Mars Space Images - Featured Image"></a>
+        </div>
+      <div class='d-md-block'></div>
+        <div class='col-md-4'>
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Current Weather on Mars</h5>
               <p class="card-text">{{mars_data.mars_weather}}</p>
             </div>
           </div>
+          <br>
           <div>
             <h5>Mars Facts</h5>
-            <table>{{mars_data.html_table_string}}</table>                    
+            <table>{{mars_data.html_table_string|safe}}</table>                    
           </div>
         </div>
       </div>
+<br>
       <div class='row'>
           <div class='col-lg-6'>
               <div class="card">
-                  <img src="{{mars_data.hemisphere_image_urls[0].image_url}}" class="card-img-top" alt="{{mars_data.hemisphere_image_urls[0].title}}">
+                  <img src="{{mars_data.hemisphere_image_urls[0].img_url}}" class="card-img-top" alt="">
                   <div class="card-body">
                       <h5 class="card-title">{{mars_data.hemisphere_image_urls[0].title}}</h5>
-                      <a href="{{mars_data.hemisphere_image_urls[0].image_url}}" class="btn btn-primary"></a>
                   </div>
               </div>
           </div>
           <div class='col-lg-6'>
               <div class="card">
-                  <img src="{{mars_data.hemisphere_image_urls[1].image_url}}" class="card-img-top" alt="{{mars_data.hemisphere_image_urls[1].title}}">
+                  <img src="{{mars_data.hemisphere_image_urls[1].img_url}}" class="card-img-top" alt="">
                   <div class="card-body">
                       <h5 class="card-title">{{mars_data.hemisphere_image_urls[1].title}}</h5>
-                      <a href="{{mars_data.hemisphere_image_urls[1].image_url}}" class="btn btn-primary"></a>
                   </div>
               </div>
           </div>
@@ -63,19 +75,17 @@
       <div class='row'>
           <div class='col-lg-6'>
               <div class="card">
-                  <img src="{{mars_data.hemisphere_image_urls[2].image_url}}" class="card-img-top" alt="{{mars_data.hemisphere_image_urls[2].title}}">
+                  <img src="{{mars_data.hemisphere_image_urls[2].img_url}}" class="card-img-top" alt="">
                   <div class="card-body">
                       <h5 class="card-title">{{mars_data.hemisphere_image_urls[2].title}}</h5>
-                      <a href="{{mars_data.hemisphere_image_urls[2].image_url}}" class="btn btn-primary"></a>
                   </div>
               </div>
           </div>
           <div class='col-lg-6'>
               <div class="card">
-                  <img src="{{mars_data.hemisphere_image_urls[3].image_url}}" class="card-img-top" alt="{{mars_data.hemisphere_image_urls[3].title}}">
+                  <img src="{{mars_data.hemisphere_image_urls[3].img_url}}" class="card-img-top" alt="">
                   <div class="card-body">
                       <h5 class="card-title">{{mars_data.hemisphere_image_urls[3].title}}</h5>
-                      <a href="{{mars_data.hemisphere_image_urls[3].image_url}}" class="btn btn-primary"></a>
                   </div>
               </div>
           </div>
